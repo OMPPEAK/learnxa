@@ -1,57 +1,110 @@
+<style>
+  .navbar-brand {
+    display: inline-block;
+    /* line-height: inherit; */
+    white-space: nowrap;
+    font-size: 30px;
+    font-weight: 700;
+    /* color: white !important; */
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  
+.link-dark.nav-link.active{
+  border-right: red solid 4px !important;
+  /* background-color: #495057; */
+  /* background-color: white; */
+  background-color: #007bff;
+  /* color: rgb(9, 25, 60) !important; */
+  color: white !important;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(4, 244, 8, 0.1); */
+  transform: translateX(-5px);
+  /* background-color: #f0f8ff; */
+}
+
+.custom-divider {
+  border-top: 2px solid #000;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+</style>
+
+
 <!-- <aside id="sidebar" class="sidebar "> -->
 <aside id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-ltight sidebar" style="background-color: #ffff;">
-  <!-- <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <img src="../assets/img/jeta-logo-dark.png" alt="Jeta Logo" width="100px">
-        </a> -->
-  <!-- <div class="logo-section mb-3 mb-md-0 me-md-auto"> -->
-  <div class="logo-section">
-    <a href="/" class="d-flex align-items-center link-dark text-center text-decoration-none">
-      <img src="<?= base_url('assets/img/JETA-MLD-AppLogo.png') ?>" alt="Jeta Logo" width="90px">
+
+  <div class="logo-section text-center">
+    <a class="navbar-brand" href="/" style="font-weight: 500px; margin-bottom:0;">
+      <div>Learn<span style="color: #007bff;">X</span>a</div>
     </a>
-    <hr>
   </div>
- 
-  <ul class="nav nav-pills flex-column mb-auto">
-    MENU
+  <hr class="custom-divider">
+
+  <ul class="nav nav-pills text-dark flex-column mb-auto" >
+    <div class="font-weight-bold">MENU</div>
     <li class="nav-item">
-      <a href="#index.php" class="nav-link link-dark">
+      <a href="/admin" class="nav-link link-dark">
         <i class="bi bi-speedometer2 me-2"></i>
         Dashboard
       </a>
     </li>
+    <!-- Course Management -->
+    <li>
+      <a href="/admin/course" class="nav-link link-dark">
+        <i class="bi bi-file-earmark-text me-2"></i>
+        Course
+      </a>
+    </li>
     <!-- Test Management -->
     <li>
-      <a href="#test.php" class="nav-link link-dark">
+      <a href="/quizzes" class="nav-link link-dark">
         <i class="bi bi-file-earmark-text me-2"></i>
-        Test Management
+        Quiz Management
       </a>
     </li>
-    <li>
-      <a href="#user.php" class="nav-link link-dark">
-        <i class="bi bi-file-earmark-text me-2"></i>
-        User Management
-      </a>
-    </li>
-
     <!-- Question Bank -->
     <li>
-      <a href="#" class="nav-link link-dark">
+      <a href="/questionbank" class="nav-link link-dark">
         <i class="bi bi-journal-text me-2"></i>
         Question Bank
       </a>
     </li>
+    <li>
+      <a href="/modules" class="nav-link link-dark">
+        <i class="bi bi-journal-text me-2"></i>
+        Modules
+      </a>
+    </li>
+    <li>
+      <a href="/lessons" class="nav-link link-dark">
+        <i class="bi bi-journal-text me-2"></i>
+        Lessons
+      </a>
+    </li>
+
+    <li>
+      <a href="/assignments" class="nav-link link-dark">
+        <i class="bi bi-file-earmark-text me-2"></i>
+        Assignments
+      </a>
+    </li>
+
+    
     <!-- Settings -->
     <li>
-      <a href="#" class="nav-link link-dark">
+      <a href="/timetables" class="nav-link link-dark">
         <i class="bi bi-gear me-2"></i>
-        Settings
+        Timetables
       </a>
     </li>
     <!-- Notification -->
     <li>
       <a href="#" class="nav-link link-dark">
         <i class="bi bi-bell me-2"></i>
-        Notification
+        Virtual Classes
       </a>
     </li>
     <!-- Integration -->
@@ -94,3 +147,18 @@
   </ul>
 </aside>
 <!-- </aside> -->
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    }
+  });
+});
+
+</script>

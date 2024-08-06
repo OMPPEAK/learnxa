@@ -252,38 +252,54 @@ class VirtualClassController extends BaseController
     }
 
     // Remove Courses from Class
-    public function removeCourseFromVirtualClass($courseId, $virtualClassId)
-    {
-         // $courseId = $this->request->getPost('course_id');
-         // $virtualClassId = $this->request->getPost('virtualclass_name');
-     
-         log_message('debug', 'Received Course ID: ' . $courseId);
-         log_message('debug', 'Received VirtualClass ID: ' . $virtualClassId);
-     
-         if (!is_numeric($courseId) || !is_numeric($virtualClassId)) {
-             return $this->response->setJSON([
-                 'status' => 'error',
-                 'message' => 'Invalid input.'
-             ]);
-         }
-     
-         $deleted = $this->courseVirtualClassModel->where('course_id', $courseId)
-                                          ->where('virtualclass_id', $virtualClassId)
-                                          ->delete();
-     
-         if ($deleted) {
-             return $this->response->setJSON([
-                 'status' => 'success',
-                 'message' => 'Courses removed successfully.'
-             ]);
-         } else {
-             return $this->response->setJSON([
-                 'status' => 'error',
-                 'message' => 'Failed to remove Courses'
-             ]);
-         }
-     
+public function removeCourseFromVirtualClass($virtualClassId, $courseId)
+{
+    // Initialize the model
+    $courseVirtualClassModel = new \App\Models\CourseVirtualClassModel();
+
+    log_message('debug', 'Received Course ID: ' . $courseId);
+    log_message('debug', 'Received VirtualClass ID: ' . $virtualClassId);
+
+    if (!is_numeric($courseId) || !is_numeric($virtualClassId)) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Invalid input.'
+        ]);
     }
+
+    // Check if the entry exists before attempting to delete
+    $entryExists = $courseVirtualClassModel->where('virtualclass_id', $virtualClassId)
+                                            ->where('course_id', $courseId)
+                                            ->first();
+    log_message('debug', 'Entry exists: ' . json_encode($entryExists));
+
+    if (!$entryExists) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Entry does not exist.'
+        ]);
+    }
+
+    // Attempt to delete the entry
+    $deleted = $courseVirtualClassModel->where('virtualclass_id', $virtualClassId)
+                                        ->where('course_id', $courseId)
+                                        ->delete();
+    log_message('debug', 'Deletion result: ' . $deleted);
+
+    if ($deleted) {
+        return $this->response->setJSON([
+            'status' => 'success',
+            'message' => 'Course removed successfully.'
+        ]);
+    } else {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Failed to remove course.'
+        ]);
+    }
+}
+
+
 
     
     // Assign Timetable to Class

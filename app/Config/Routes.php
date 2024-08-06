@@ -223,8 +223,8 @@ $routes->group('virtualclasses', ['namespace' => 'App\Controllers'], function($r
     $routes->get('view/(:num)', 'VirtualClassController::viewCourse/$1');
     $routes->post('addVirtualClasses', 'VirtualClassController::addVirtualClasses');
     $routes->post('assignCoursesForVirtualClass', 'VirtualClassController::assignCoursesForVirtualClass'); // Assign Quizzes to a course
-    $routes->post('removeVirtualClass/(:num)/(:num)', 'VirtualClassController::removeVirtualClass/$1/$2');
     $routes->get('getCoursesForVirtualClass/(:num)', 'VirtualClassController::getCoursesForVirtualClass/$1');
+    $routes->post('removeCourseFromVirtualClass/(:num)/(:num)', 'VirtualClassController::removeCourseFromVirtualClass/$1/$2');
     $routes->get('getVirtualClassDetails/(:num)', 'VirtualClassController::getVirtualClassDetails/$1');
 
     $routes->get('getTimetablesForClass/(:num)', 'VirtualClassController::getTimetablesForClass/$1');

@@ -749,134 +749,88 @@ body, html {
         });
 
 
-        // Fetching Courses for Class
-        // function fetchVirtualClassesForCourse(course_id) {
-        //     axios.get(`< base_url('virtualclasses/getVirtualClassesForCourse') ?>/${course_id}`)
-        //         .then(response => {
-        //             var virtualClasses = response.data.assignedVirtualClasses;
-        //             var availableVirtualClasses = response.data.allVirtualClasses;
-        //             var virtualClassesSection = $('#virtualClassesSection');
+       // Fetching Courses for Class
+function fetchCoursesForClass(class_id) {
+    // Make an API call to fetch courses assigned and available for the selected class
+    axios.get(`<?= base_url('virtualclasses/getCoursesForVirtualClass') ?>/${class_id}`)
+        .then(response => {
+            var assignedCourses = response.data.assignedCourses; // Courses already assigned to the class
+            var availableCourses = response.data.allCourses; // All available courses that can be assigned
+            var courseSection = $('#courseSection'); // The section where the form and tables will be inserted
 
-        //             virtualClassesSection.empty();
+            // Clear the course section before appending new content
+            courseSection.empty();
 
-        //             var availableVirtualClassesHtml = `
-                    
-        //                 <div class="form-group">
-        //                     <label for="virtualclass_ids">Select virtualClasses to Assign</label>
-        //                     <select id="virtualclass_ids" name="virtualClasses[]" class="form-control" multiple="multiple" required>
-        //                         ${availableVirtualClasses.map(virtualclass => `<option value="${virtualclass.virtualclass_id}">${virtualclass.virtualclass_name}</option>`).join('')}
-        //                     </select>
-        //                 </div>
-        //                 <button type="submit" class="btn btn-primary">Assign virtualClasses</button>`;
+            // Generate the HTML for the available courses select dropdown
+            var availableCoursesHtml = `
+                <div class="form-group">
+                    <label for="course_ids">Select Courses to Assign</label>
+                    <select id="course_ids" name="courses[]" class="form-control" multiple="multiple" required>
+                        ${availableCourses.map(course => `<option value="${course.course_id}">${course.course_title}</option>`).join('')}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Assign Courses</button>
+            `;
 
-        //             virtualClassesSection.append(availableVirtualClassesHtml);
+            // Append the available courses dropdown to the course section
+            courseSection.append(availableCoursesHtml);
 
-        //             $('#virtualclass_ids').select2();
+            // Initialize the select2 plugin for the courses dropdown
+            $('#course_ids').select2();
 
-        //             if (virtualClasses.length > 0) {
-        //                 var tableHtml = `
-        //                     <table class="table table-striped">
-        //                         <thead>
-        //                             <tr>
-        //                                 <th>Virtual Class</th>
-        //                                 <th>Actions</th>
-        //                             </tr>
-        //                         </thead>
-        //                         <tbody>`;
+            // Check if there are any assigned courses
+            if (assignedCourses.length > 0) {
+                // Generate the HTML for the table displaying assigned courses
+                var tableHtml = `
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
 
-        //                 virtualClasses.forEach(virtualclass => {
-        //                     tableHtml += `
-        //                         <tr>
-        //                             <td>${virtualclass.virtualclass_name}</td>
-        //                             <td>
-        //                                 <button type="button" class="btn btn-danger btn-sm" onclick="removeVirtualClassFromCourse(${course_id}, ${virtualclass.virtualclass_id})">Remove</button>
-        //                             </td>
-        //                         </tr>`;
-        //                 });
-
-        //                 tableHtml += `
-        //                         </tbody>
-        //                     </table>`;
-
-        //                 virtualClassesSection.append(tableHtml);
-        //             } else {
-        //                 virtualClassesSection.append('<p>No virtualClasses assigned to this course. Please assign virtualClasses.</p>');
-        //             }
-
-                
-        //         })
-        //         .catch(error => {
-        //             console.error('Error fetching virtualClasses for course:', error);
-        //         });
-        // }
-
-
-        // Fetching Courses for Class
-        function fetchCoursesForClass(course_id) {
-            axios.get(`<?= base_url('virtualclasses/getCoursesForVirtualClass') ?>/${course_id}`)
-                .then(response => {
-                    var assignedCourses = response.data.assignedCourses;
-                    var availableCourses = response.data.allCourses;
-                    var courseSection = $('#courseSection');
-
-                    courseSection.empty();
-
-                    var availableCoursesHtml = `
-                        <div class="form-group">
-                            <label for="course_ids">Select Courses to Assign</label>
-                            <select id="course_ids" name="courses[]" class="form-control" multiple="multiple" required>
-                                ${assignedCourses.map(course => `<option value="${course.course_id}">${course.course_title}</option>`).join('')}
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Assign Courses</button>
+                // Loop through the assigned courses and add each to the table
+                assignedCourses.forEach(course => {
+                    tableHtml += `
+                        <tr>
+                            <td>${course.course_title}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="removeCourseFromVirtualClass(${class_id}, ${course.course_id})">Remove</button>
+                            </td>
+                        </tr>
                     `;
-
-                    courseSection.append(availableCoursesHtml);
-
-                    $('#course_ids').select2();
-
-                    if (assignedCourses.length > 0) {
-                        var tableHtml = `
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Course</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                        `;
-
-                        assignedCourses.forEach(course => {
-                            tableHtml += `
-                                <tr>
-                                    <td>${course.course_name}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-sm" onclick="removeCourseFromClass(${course_id}, ${course.course_id})">Remove</button>
-                                    </td>
-                                </tr>
-                            `;
-                        });
-
-                        tableHtml += `
-                                </tbody>
-                            </table>
-                        `;
-
-                        timetablesSection.append(tableHtml);
-                    } else {
-                        timetablesSection.append('No Timetable assigned to this class. Please assign Timetable.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching Timetable for course:', error);
                 });
-        }
+
+                // Close the table HTML tags
+                tableHtml += `
+                        </tbody>
+                    </table>
+                `;
+
+                // Append the generated table to the course section
+                courseSection.append(tableHtml);
+            } else {
+                // If no courses are assigned, display a message
+                courseSection.append('<p>No Courses assigned to this class. Please assign courses.</p>');
+            }
+        })
+        .catch(error => {
+            // Handle any errors that occur during the API call
+            console.error('Error fetching courses for class:', error);
+        });
+}
 
 
-        // Remove Virtual Class
-        function removeVirtualClassFromCourse(courseId, virtualClassId) {
-            if (confirm('Are you sure you want to remove this Virtualclass from the course?')) {
+
+    
+
+
+       // Remove Virtual Class
+   function removeCourseFromVirtualClass(virtualClassId, courseId) {
+            if (confirm('Are you sure you want to remove this Course from the virtual class?')) {
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
                 if (!csrfToken) {
@@ -884,7 +838,7 @@ body, html {
                     return;
                 }
 
-                axios.post(`<?= base_url('virtualclasses/removeVirtualClass') ?>/${courseId}/${virtualClassId}`, {}, {
+                axios.post(`<?= base_url('virtualclasses/removeCourseFromVirtualClass') ?>/${virtualClassId}/${courseId}`, {}, {
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     }
@@ -893,16 +847,17 @@ body, html {
                     console.log(response.data); // Log response for debugging
                     if (response.data.status === 'success') {
                         alert(response.data.message);
-                        fetchVirtualClassesForCourse(courseId); // Refresh the list
+                        fetchCoursesForClass(courseId); // Refresh the list
                     } else {
                         alert(response.data.message);
                     }
                 })
                 .catch(error => {
-                    console.error('Error removing Virtualclass from course:', error);
+                    console.error('Error removing Course from Virtual Class:', error);
                 });
             }
         }
+
 
         // Fetching Timetables for Class
         function fetchTimetablesForClass(timetable_id) {
@@ -986,7 +941,7 @@ body, html {
                     console.log(response.data); // Log response for debugging
                     if (response.data.status === 'success') {
                         alert(response.data.message);
-                        fetchVirtualClassesForCourse(timetableId); // Refresh the list
+                        fetchTimetablesForClass(timetableId); // Refresh the list
                     } else {
                         alert(response.data.message);
                     }
