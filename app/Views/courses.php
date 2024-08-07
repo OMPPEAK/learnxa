@@ -283,7 +283,7 @@
             <div class="col-lg-3 col-md-6 mb-4">
                 <a href="course-description.php">
                     <div class="course-card">
-                        <img src="./assets/img/c++.jpg" alt="Course Image" />
+                        <img src="./assets/img/cplus.jpg" alt="Course Image" />
                         <div class="card-body">
                             <h4 class="card-title">Introduction to Object Oriented Programming with C++</h4>
                             <div class="course-rating">

@@ -55,42 +55,42 @@ $routes->get('logout', 'AuthReg::logout');
 $routes->get('dashboard', 'AuthReg::dashboard');
 
 // Admin Routes
-$routes->get('admin', 'Pages::Admin');
-$routes->get('admin/analytics', 'Pages::analyticsAndReports');
-$routes->get('admin/announcements', 'Pages::Announcements');
-$routes->get('admin/backup', 'Pages::backupRestore');
+$routes->get('admin', 'Pages::Admin'); //Good
+$routes->get('admin/analytics', 'Pages::analyticsAndReports'); //Good
+$routes->get('admin/announcements', 'Pages::Announcements'); //Good 
+$routes->get('admin/backup', 'Pages::backupRestore'); //Good
 $routes->get('admin/course-details', 'Pages::courseDetails');
-$routes->get('admin/course-performance-report', 'Pages::coursePerformanceReport');
-$routes->get('admin/coupon', 'Pages::createAndEditCoupon');
-$routes->get('admin/course', 'Pages::createAndEditCourse');
-$routes->get('admin/category', 'Pages::createAndEditCategory');
-$routes->get('admin/topic', 'Pages::createAndEditTopic');
-$routes->get('admin/lesson', 'Pages::createAndEditLesson');
-$routes->get('admin/create-role', 'Pages::createRole');
-$routes->get('admin/edit-role', 'Pages::editRole');
-$routes->get('admin/createUser', 'Pages::createUser');
-$routes->get('admin/editUser', 'Pages::editUser');
-$routes->get('admin/emailTemplates', 'Pages::emailTemplates');
-$routes->get('admin/enrollment-details', 'Pages::enrollmentDetails');
-$routes->get('admin/enrollment-list', 'Pages::enrollmentList');
-$routes->get('admin/enrollment-management', 'Pages::enrollmentManagement');
-$routes->get('admin/enrollment-request', 'Pages::enrollmentRequest');
-$routes->get('admin/faq-management', 'Pages::faqManagement');
-$routes->get('admin/financial-management', 'Pages::financialManagement');
-$routes->get('admin/financial-report', 'Pages::financialReport');
-$routes->get('admin/general-settings', 'Pages::generalSettings');
-$routes->get('admin/instructor-assignment', 'Pages::instructorAssignment');
-$routes->get('admin/integration-settings', 'Pages::integrationSettings');
-$routes->get('admin/lesson-list', 'Pages::lessonList');
-$routes->get('admin/module-list', 'Pages::moduleList');
-$routes->get('admin/payment-gateway-setup', 'Pages::paymentGatewaySetup');
-$routes->get('admin/quiz-management', 'Pages::quizManagement');
+$routes->get('admin/course-performance-report', 'Pages::coursePerformanceReport'); //It should be in analytics
+$routes->get('admin/coupon', 'Pages::createAndEditCoupon'); //it should be under products
+$routes->get('admin/course', 'Pages::createAndEditCourse'); //Good
+$routes->get('admin/category', 'Pages::createAndEditCategory'); //Good it should be under course
+$routes->get('admin/topic', 'Pages::createAndEditTopic');//Good it should be under course
+$routes->get('admin/lesson', 'Pages::createAndEditLesson'); //Good (all good should be standalone)
+$routes->get('admin/create-role', 'Pages::createRole'); //It should be under use management
+$routes->get('admin/edit-role', 'Pages::editRole'); //under role (modal)
+$routes->get('admin/createUser', 'Pages::createUser'); //Under usermanagement ***
+$routes->get('admin/editUser', 'Pages::editUser'); //Under User
+$routes->get('admin/emailTemplates', 'Pages::emailTemplates'); //Under announcement
+$routes->get('admin/enrollment-details', 'Pages::enrollmentDetails'); //Under Usermanagement
+$routes->get('admin/enrollment-list', 'Pages::enrollmentList'); //Under Usermanagement
+$routes->get('admin/enrollment-management', 'Pages::enrollmentManagement'); //Under Usermanagement or Enrollment
+$routes->get('admin/enrollment-request', 'Pages::enrollmentRequest'); //Under request
+$routes->get('admin/faq-management', 'Pages::faqManagement'); //faq
+$routes->get('admin/financial-management', 'Pages::financialManagement'); //Good
+$routes->get('admin/financial-report', 'Pages::financialReport'); //Under financial managemet
+$routes->get('admin/general-settings', 'Pages::generalSettings'); //Settings
+$routes->get('admin/instructor-assignment', 'Pages::instructorAssignment'); //Should be under User Management
+$routes->get('admin/integration-settings', 'Pages::integrationSettings'); //Should be under settings
+// $routes->get('admin/lesson-list', 'Pages::lessonList'); //Already Done
+// $routes->get('admin/module-list', 'Pages::moduleList'); //Already Done
+$routes->get('admin/payment-gateway-setup', 'Pages::paymentGatewaySetup'); //Under Payment Management (Settings)
+// $routes->get('admin/quiz-management', 'Pages::quizManagement'); //Done
 $routes->get('admin/transaction-list', 'Pages::transactionList');
 $routes->get('admin/user', 'Pages::user');
 $routes->get('admin/user-rofile', 'Pages::userProfile');
-$routes->get('admin/assignment', 'Pages::createAndEditAssignment');
-$routes->get('admin/quiz', 'Pages::createAndEditQuiz');
-$routes->get('admin/video', 'Pages::createAndEditVideo');
+// $routes->get('admin/assignment', 'Pages::createAndEditAssignment');
+// $routes->get('admin/quiz', 'Pages::createAndEditQuiz');
+// $routes->get('admin/video', 'Pages::createAndEditVideo');
 
 
 
