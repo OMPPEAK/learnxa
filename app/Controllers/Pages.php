@@ -55,6 +55,34 @@ class Pages extends BaseController
     {
         return view('student/timetable.php');
     }
+    public function Assignment()
+    {
+        return view('student/assignment.php');
+    }
+    public function Community()
+    {
+        return view('student/community.php');
+    }
+    public function Notification()
+    {
+        return view('student/notification.php');
+    }
+    public function VirtualClass()
+    {
+        return view('student/virtual_class.php');
+    }
+    public function Results()
+    {
+        return view('student/results.php');
+    }
+    public function Archievement()
+    {
+        return view('student/archievement.php');
+    }
+    public function Feedback()
+    {
+        return view('student/feedback.php');
+    }
 
 
     // :::::::::::::: PAGES CONTROLLER FOR VIEWS :::::::::::::::::::
@@ -143,7 +171,7 @@ class Pages extends BaseController
         $data['topics'] = $topicModel->findAll();
 
         // return view('create_course', $data);
-        return view('admin/createAndEditCourse', $data);
+        return view('admin/course_management/createAndEditCourse', $data);
     }
 
     // Create and Edit Category

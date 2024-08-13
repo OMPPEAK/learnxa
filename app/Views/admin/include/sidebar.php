@@ -161,6 +161,7 @@
 </aside>
 
 <script>
+  // For Active link in Sidebar and Navbar or any Nav links
   document.addEventListener("DOMContentLoaded", function() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-link');

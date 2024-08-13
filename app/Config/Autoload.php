@@ -94,6 +94,6 @@ class Autoload extends AutoloadConfig
      *
      * @var list<string>
      */
-    public $helpers = ['csv'];
+    public $helpers = ['csv', 'course'];
 
 }

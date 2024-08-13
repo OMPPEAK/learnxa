@@ -72,7 +72,7 @@
                                         aria-valuemin="0" aria-valuemax="100">50%</div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary w-100">Continue Learning</button>
+                            <a href="/student/e-learning"><button class="btn btn-primary w-100">Continue Learning</button></a>
                             <hr>
                         </div>
                         <div class="col-lg-9 col-md-6 mb-4">
@@ -119,14 +119,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="">
-                                    <div class="category-header" style="font-size:17px;">
-                                        Course Progress
-                                    </div>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 50%;"
-                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                                    </div>
+
+                            </div>
+                            <div class="">
+                                <div class="category-header" style="font-size:17px;">
+                                    Course Progress
+                                </div>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"
+                                        aria-valuemin="0" aria-valuemax="100">50%</div>
                                 </div>
                             </div>
                         </div>

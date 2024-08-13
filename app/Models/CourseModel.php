@@ -13,7 +13,8 @@ class CourseModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'course_title',	
+        'course_title',
+        'slug',
         'course_tagline',	
         'course_overview',	
         'course_aquiring_skills',	
@@ -35,6 +36,11 @@ class CourseModel extends Model
         'updated_at',	
         'topic_id'
     ];
+
+    public function getCourses()
+    {
+        return $this->findAll();
+    }
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

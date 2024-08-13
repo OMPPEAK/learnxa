@@ -12,7 +12,15 @@
 <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
-<!-- <link rel="stylesheet" href="../admin.css"> -->
+<!-- FullCalendar -->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+
+<!-- Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
 
 
 <style>
@@ -100,35 +108,10 @@
                     <!-- Add more summary metrics as needed -->
                 </div>
 
-                <!-- Quick Access Links (Shortcut Buttons or Tiles) -->
-                <div class="row mt-4">
-                    <div class="col-md-4">
-                        <a href="#new-test">
-                            <div class="p-2 shadow-sm text-center learnxa-bg-blue">
-                                <div>New Course</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="#new-test">
-                            <div class="p-2 shadow-sm text-center learnxa-bg-blue">
-                                <div>Manage Users</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="#new-test">
-                            <div class="p-2 shadow-sm text-center learnxa-bg-blue">
-                                <div>Generate Reports</div>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
 
                 <!-- Graphs or charts displaying trends and statistics -->
                 <div class="row mt-4">
-                    <div class="col-md-7">
+                    <div class="col-md-7 mb-4">
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">Course Performance</h5>
@@ -136,7 +119,7 @@
                                 <canvas id="myChart" width="400" height="200"></canvas>
                             </div>
                         </div>
-                        <div class="row mt-4">
+                        <!-- <div class="row mt-4">
                             <div class="col-md-4">
                                 <a href="#new-test">
                                     <div class="p-2 shadow-sm text-center learnxa-bg-blue">
@@ -159,119 +142,94 @@
                                 </a>
                             </div>
 
+                        </div> -->
+                    </div>
+                    <div class="col-md-5 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold text-primary">Top Course</h6>
+                                <a href="#" class="text-primary">See All</a>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <img src="./assets/img/cplus.jpg" alt="Graphic Design" class=""
+                                                style="width: 50px; height: 50px; margin-right: 10px;">
+                                            Complete Graphic Design Course
+                                        </div>
+                                        <span class="badge badge-primary badge-pill">$3500</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <img src="./assets/img/cplus.jpg" alt="AI Bootcamp" class=""
+                                                style="width: 50px; height: 50px; margin-right: 10px;">
+                                            Artificial Intelligence Bootcamp
+                                        </div>
+                                        <span class="badge badge-primary badge-pill">$1450</span>
+                                    </li>
+
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <img src="./assets/img/cplus.jpg" alt="Data Science" class=""
+                                                style="width: 50px; height: 50px; margin-right: 10px;">
+                                            Data Science with Python
+                                        </div>
+                                        <span class="badge badge-primary badge-pill">$2250</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                </div>
+
+
+                
+                <!-- Recent Activities -->
+                <div class="row">
+                    <div class="col-md-8 mb-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title">Sales Analytics</h5>
-
-                                <!-- Dummy graph container -->
-                                <!-- <canvas id="subscriptionSalesChart" width="400" height="200"></canvas> -->
-                                <canvas id="myCharty" width="400" height="200"></canvas>
-
+                                <h5 class="card-title">Recent Activity Feed</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <div><strong>User Registration:</strong> John Doe registered.</div>
+                                        <div class="text-muted">1 hour ago</div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <div><strong>Test Submission:</strong> Jane Smith submitted Test 123.</div>
+                                        <div class="text-muted">2 hours ago</div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <div><strong>Test Submission:</strong> Jane Smith submitted Test 123.</div>
+                                        <div class="text-muted">2 hours ago</div>
+                                    </li>
+                                    <!-- Add more activity entries as needed -->
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="mt-4">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card text-left shadow-sm">
-                                <div class="card-body">
-                                    <h4 class="card-title small">Sources</h4>
-                                    <p class="card-text">Sales</p>
-                                    <ul class="list-group">
-                                        <!-- Activity Entry 1 -->
-                                        <li class="list-group-item">
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <strong>User Registration:</strong> John Doe registered.
-                                                </div>
-                                                <div class="text-muted">1 hour ago</div>
-                                            </div>
-                                        </li>
-                                        <!-- Activity Entry 2 -->
-                                        <li class="list-group-item">
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <strong>Test Submission:</strong> Jane Smith submitted Test 123.
-                                                </div>
-                                                <div class="text-muted">2 hours ago</div>
-                                            </div>
-                                        </li>
-                                        <!-- Add more activity entries as needed -->
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card text-left shadow-sm">
-                                <div class="card-body">
-                                    <h4 class="card-title small">Recent Activity Feed</h4>
-                                    <p class="card-text">Sales</p>
-                                    <ul class="list-group">
-                                        <!-- Activity Entry 1 -->
-                                        <li class="list-group-item">
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <strong>User Registration:</strong> John Doe registered.
-                                                </div>
-                                                <div class="text-muted">1 hour ago</div>
-                                            </div>
-                                        </li>
-                                        <!-- Activity Entry 2 -->
-                                        <li class="list-group-item">
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <strong>Test Submission:</strong> Jane Smith submitted Test 123.
-                                                </div>
-                                                <div class="text-muted">2 hours ago</div>
-                                            </div>
-                                        </li>
-                                        <!-- Add more activity entries as needed -->
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card text-left shadow-sm">
-                                <div class="card-body">
-                                    <h4 class="card-title small">Test Taken Locations</h4>
-                                    <!-- <p class="card-text">Sales</p> -->
-                                    <div class="map-container">
-                                        <!-- Google Maps iframe -->
-                                        <iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.3437201231443!2d-3.700779784192209!3d40.416775995345265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288e67765f7b%3A0x7522f9a39bf26951!2sPuerta%20del%20Sol!5e0!3m2!1sen!2ses!4v1649797295702!5m2!1sen!2ses"
-                                            width="100%" height="200" style="border:0;" allowfullscreen=""
-                                            loading="lazy"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row mt-4">
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">System Status</h5>
-                                <p class="card-text">Current Status: <span class="text-success">Operational</span></p>
-                                <p class="card-text">Server Uptime: 99.9%</p>
-                                <p class="card-text">Database Connectivity: <span class="text-success">Connected</span>
-                                </p>
-                                <p class="card-text">Maintenance: <span class="text-warning">Scheduled</span></p>
+                                <p>Current Status: <span class="text-success">Operational</span></p>
+                                <p>Server Uptime: 99.9%</p>
+                                <p>Database Connectivity: <span class="text-success">Connected</span></p>
+                                <p>Maintenance: <span class="text-warning">Scheduled</span></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                </div>
+
+
+                <!-- Latest Transactions -->
+                <div class="row mt-4">
+                    <div class="col-12">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title">Latest Transaction</h5>
+                                <h5 class="card-title">Latest Transactions</h5>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered" id="transactionTable">
                                         <thead>
@@ -283,87 +241,45 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- Transaction data will be dynamically inserted here -->
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2024-04-10</td>
-                                                <td>$100</td>
-                                                <td>Lorem ipsum dolor sit amet</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>2024-04-09</td>
-                                                <td>$200</td>
-                                                <td>Consectetur adipiscing elit</td>
-                                            </tr>
-                                            <!-- Add more rows as needed -->
+                                            <!-- Transaction data goes here -->
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
 
-                <div class="row mt-4">
-                    <div class="col-md-8">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">User Status</h5>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered" id="transactionTable">
-                                        <thead>
-                                            <tr>
-                                                <th>UserID</th>
-                                                <th>Role</th>
-                                                <th>Status</th>
-                                                <th>Description</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Transaction data will be dynamically inserted here -->
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Admin</td>
-                                                <td>Online</td>
-                                                <td>Taking Test</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Teacher</td>
-                                                <td>Online</td>
-                                                <td>Setting Questions</td>
-                                            </tr>
-                                            <!-- Add more rows as needed -->
-                                        </tbody>
-                                    </table>
-                                </div>
 
+
+
+
+
+
+
+                <!-- Calendar and Map Section -->
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card text-left shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="card-title small">Schedule</h4>
+                                    <div id='calendar'></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="card">
+                        <div class="col-md-6">
+                            <div class="card text-left shadow-sm">
                                 <div class="card-body">
-                                    <h5 class="card-title">Basic Subscription</h5>
-                                    <p class="card-text">Unlock basic features</p>
-                                    <button class="btn btn-primary">Subscribed</button>
-                                </div>
-                            </div>
-
-                            <div class="card mt-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Premium Subscription</h5>
-                                    <p class="card-text">Unlock premium features</p>
-                                    <button class="btn btn-success">Subscribe</button>
+                                    <h4 class="card-title small">Test Taken Locations</h4>
+                                    <div id="map" style="height: 500px;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </section>
     </main>
 
@@ -381,6 +297,62 @@
     <script src="./assets/js/script.js"></script>
     <!-- Dummy graph data and script -->
     <script>
+        // Map
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize the map
+            var map = L.map('map').setView([9.0820, 8.6753], 6); // Centered on Nigeria
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Define course purchase locations (replace with your data)
+            var locations = [{
+                    name: 'Lagos',
+                    lat: 6.5244,
+                    lng: 3.3792
+                },
+                {
+                    name: 'Abuja',
+                    lat: 9.0578,
+                    lng: 7.4951
+                },
+                {
+                    name: 'Kano',
+                    lat: 12.0022,
+                    lng: 8.5919
+                },
+                // Add more locations here
+            ];
+
+            // Add markers to the map
+            locations.forEach(function (location) {
+                L.marker([location.lat, location.lng]).addTo(map)
+                    .bindPopup(location.name);
+            });
+        });
+        // Calendar
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [{
+                        title: 'Class 1',
+                        start: '2024-08-07T10:00:00',
+                        end: '2024-08-07T12:00:00'
+                    },
+                    {
+                        title: 'Class 2',
+                        start: '2024-08-08T14:00:00',
+                        end: '2024-08-08T16:00:00'
+                    },
+                    // Add more events here
+                ]
+            });
+            calendar.render();
+        });
+
         // Dummy data for the graph
         const data = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

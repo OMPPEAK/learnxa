@@ -10,7 +10,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('become-teacher', 'Pages::becomeTeacher');
 $routes->get('category', 'Pages::category');
-$routes->get('course-description', 'Pages::courseDescription');
+// $routes->get('course-description', 'Pages::courseDescription');
 $routes->get('virtual-courses', 'Pages::virtualClassCourses');
 $routes->get('instructor', 'Pages::instructor');
 $routes->get('login', 'Pages::login');
@@ -22,13 +22,28 @@ $routes->get('email-test', 'EmailTest::index');
 $routes->get('calendar', 'Pages::calendar');
 $routes->get('calend', 'Pages::calendarR');
 $routes->get('verify-payment', 'PaymentController::verifyPayment');
-$routes->get('checkout', 'Pages::courseCheckout');
-$routes->get('courses', 'Pages::courses');
-$routes->get('e-learning', 'Pages::eLearning');
-$routes->get('enrolled-courses', 'Pages::enrolledCourses');
-$routes->get('payment', 'Pages::payment');
-$routes->get('ad/timetable', 'Pages::timeTable');
-$routes->get('profile', 'Pages::profile');
+// $routes->get('courses', 'Pages::courses');
+$routes->get('courses', 'CourseController::index');
+$routes->get('course/(:segment)', 'CourseController::description/$1'); // View course details by slug
+$routes->post('courses/update/(:num)', 'CourseController::updateCourse/$1'); // Update an existing course by ID
+// $routes->get('checkout', 'Pages::courseCheckout');
+$routes->get('enroll/(:num)', 'CourseController::enroll/$1');
+$routes->get('checkout', 'CheckoutController::index');
+
+// Checkout Payment
+// $routes->post('/checkout', 'PaystackController::checkout');
+// $routes->get('/paystack/callback', 'PaystackController::callback');
+$routes->get('/verifyCourseEnrollmentPayment', 'PaymentController::verifyEnrollmentPayment'); //For Enrollment Payment Verification
+$routes->get('/verifyCourseEnrollmentPaymentWithFlutter', 'PaymentController::verifyCourseEnrollmentPaymentWithFlutter'); //For Flutterwave
+$routes->get('/testing', 'EnrollmentController::indexT'); //For Enrollment Payment Verification
+// $routes->get('/thank-you', 'PaymentController::thankYou');
+// $routes->get('/payment-failed', 'PaymentController::paymentFailed');
+
+
+
+
+
+
 
 
 // Country and States
@@ -37,8 +52,6 @@ $routes->get('populate-states', 'StateController::populateStates');
 
 
 // Student Routes
-$routes->get('course-details', 'Pages::enrolledCourseDetails');
-$routes->get('quiz', 'Pages::quiz');
 
 
 // AuthReg
@@ -51,8 +64,43 @@ $routes->get('logout', 'AuthReg::logout');
 
 
 
-// User Routes
-$routes->get('dashboard', 'AuthReg::dashboard');
+
+
+// $routes->group('student', function($routes) {
+$routes->group('student', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('/', 'AuthReg::dashboard');
+    $routes->get('enrolled-courses', 'Pages::enrolledCourses');
+    $routes->get('course-details', 'Pages::enrolledCourseDetails');
+    $routes->get('e-learning', 'Pages::eLearning');
+    $routes->get('quiz', 'Pages::quiz');
+    $routes->get('payment', 'Pages::payment');
+    $routes->get('timetable', 'Pages::timeTable');
+    $routes->get('profile', 'Pages::profile');
+    $routes->get('assignments', 'Pages::assignment');
+    $routes->get('community', 'Pages::Community');
+    $routes->get('notification', 'Pages::Notification');
+    $routes->get('virtual-class', 'Pages::VirtualClass');
+    $routes->get('results', 'Pages::Results');
+    $routes->get('archievement', 'Pages::Archievement');
+    $routes->get('feedback', 'Pages::Feedback');
+    $routes->get('courses/(:num)', 'Student\Courses::details/$1');
+    $routes->get('assignments', 'Student\Assignments::index');
+    $routes->get('assignments/(:num)', 'Student\Assignments::details/$1');
+    $routes->get('profile', 'Student\Profile::index');
+});
+
+
+
+
+$routes->group('admin', function($routes) {
+    $routes->get('dashboard', 'Admin\Dashboard::index');
+    $routes->get('users', 'Admin\Users::index');
+    $routes->get('courses', 'Admin\Courses::index');
+    $routes->get('instructors', 'Admin\Instructors::index');
+    $routes->get('settings', 'Admin\Settings::index');
+});
+
+
 
 // Admin Routes
 $routes->get('admin', 'Pages::Admin'); //Good
@@ -242,6 +290,3 @@ $routes->get('lessons/getAllLessons', 'LessonController::getAllLessons');
 
 // Lesson
 $routes->post('lesson/save', 'LessonController::saveLesson');
-
-
-

@@ -8,11 +8,11 @@
                     <i class="fas fa-th-large" aria-hidden="true"></i> Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                    <a class="dropdown-item" href="category">Web Development</a>
-                    <a class="dropdown-item" href="category">Data Science</a>
-                    <a class="dropdown-item" href="category">Business</a>
-                    <a class="dropdown-item" href="category">Design</a>
-                    <a class="dropdown-item" href="category">Marketing</a>
+                    <a class="dropdown-item" href="/category">Web Development</a>
+                    <a class="dropdown-item" href="/category">Data Science</a>
+                    <a class="dropdown-item" href="/category">Business</a>
+                    <a class="dropdown-item" href="/category">Design</a>
+                    <a class="dropdown-item" href="/category">Marketing</a>
                 </div>
             </li>
             <form class="form-inline my-2 my-lg-0">
@@ -28,13 +28,13 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="courses">Courses</a>
+                <a class="nav-link" href="<?= base_url('courses'); ?>">Courses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="become-teacher">Become a Teacher</a>
+                <a class="nav-link" href="/become-teacher">Become a Teacher</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="virtual-courses">Live Class</a>
+                <a class="nav-link" href="/virtual-courses">Live Class</a>
             </li>
             <?php $session = session(); ?>
             <?php //if ('isLoggedIn') : ?>

@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Mayomi Profile | LearnXa</title>
     <?php include(APPPATH . 'Views/student/include/student-head.php'); ?>
+    <title><?= session('first_name'); ?> Profile | LearnXa</title>
 </head>
 
 <body style="background-color: #f2f2f2;">
@@ -32,7 +32,7 @@
                     </div>
                     <?php endif; ?>
                     <div class="content-hero-section"
-                        style="background: url(assets/img/elearning.webp) no-repeat center center/cover;">
+                        style="background: url(<?= base_url('assets/img/elearning.webp'); ?>) no-repeat center center/cover;">
                         <div class="container text-white bottom-text">
                             <div class="row">
                                 <!-- Hero Text -->

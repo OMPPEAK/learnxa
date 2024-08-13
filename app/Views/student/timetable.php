@@ -2,26 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FpiUpdates</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/profile.css">
-    <link rel="stylesheet" href="assets/css/course.css">
+    <title>Timetable - LearnXa</title>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
-        type="text/css">
-    <!--- FullCalendar plugin --->
-    <link href='packages/core/main.css' rel='stylesheet' />
-    <link href='packages/daygrid/main.css' rel='stylesheet' />
-    <link href='packages/list/main.css' rel='stylesheet' />
+    <?php include(APPPATH . 'Views/student/include/student-head.php'); ?>
+    
     <style>
          .fc-sun {
             color: red;
@@ -48,57 +32,7 @@
 
 
             <div class="col-lg-10 col-md-6 ">
-                <nav class="navbar navbar-expand-lg p-2 bg-light box-shadow">
-                    <div class="container-fluid pl-0 pr-0 d-flex justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <form class="custom-search-form d-none d-md-flex w-100 box-shadow">
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            </form>
-                        </div>
-
-
-                        <!-- Centered logo -->
-                        <div class="logo d-md-none m-auto">
-                            <a class="navbar-brand text-centter text-dark" href="/learnxa-lite">Learn<span
-                                    style="color: #007bff;">X</span>a</a>
-                        </div>
-
-
-                        <div class="d-flex align-items-center ml-auto">
-                            <!-- Search Form -->
-                            <div class="custom-btn d-md-none mr-2" id="searchIcon" type="button">
-                                <i class="fas fa-search"></i>
-                            </div>
-
-                            <!-- User Info and Notification Bell -->
-                            <div class="d-flex align-items-center">
-                                <div class="dropdown">
-                                    <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <img src="../assets/img/profile-img.jpg" alt="User" class="mr-1"
-                                            style="width: 40px; height: 40px; border-radius: 50%;">
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                        <div class="p-2">
-                                            <div style="color: black;">
-                                                <h5 class="mb-0">Mayor Odewaye</h5>
-                                            </div>
-                                            <h6 class="username mb-0" style="color: grey;">3rd Year</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn my-2 my-sm-0 " type="button"><i class="fas fa-bell"></i></button>
-                                <!-- Sidebar toggle button for mobile view -->
-                                <div class="custom-btn d-md-none" type="button" id="sidebarToggle">
-                                    <i class="fas fa-bars"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-
-
-
+            <?php include(APPPATH . 'Views/student/include/student-navbar.php'); ?>
 
                 <!-- Hero Section -->
                 <div class="main-container mt-2 p-2" id="mainContent">
@@ -115,7 +49,7 @@
                     <section class="showcase">
                         <div class="container">
                             <div class="pb-2 mt-4 mb-2 border-bottom">
-                                <h2>Python Programming Class</h2>
+                                <div class="mb-3 font-weight-bold">Python Programming Class Timetable</div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 gedf-main">
@@ -144,14 +78,14 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src='packages/core/main.js'></script>
-    <script src='packages/interaction/main.js'></script>
-    <script src='packages/moment/main.js'></script>
-    <script src='packages/moment-timezone/main.js'></script>
-    <script src='packages/daygrid/main.js'></script>
-    <script src='packages/timegrid/main.js'></script>
-    <script src='packages/list/main.js'></script>
-    <script src='packages/google-calendar/main.js'></script>
+    <script src="<?= base_url('packages/core/main.js'); ?>"></script>
+    <script src="<?= base_url('packages/interaction/main.js'); ?>"></script>
+    <script src="<?= base_url('packages/moment/main.js'); ?>"></script>
+    <script src="<?= base_url('packages/moment-timezone/main.js'); ?>"></script>
+    <script src="<?= base_url('packages/daygrid/main.js'); ?>"></script>
+    <script src="<?= base_url('packages/timegrid/main.js'); ?>"></script>
+    <script src="<?= base_url('packages/list/main.js'); ?>"></script>
+    <script src="<?= base_url('packages/google-calendar/main.js'); ?>"></script>
     <script>
         // Calendar Integration with Google
         document.addEventListener('DOMContentLoaded', function () {

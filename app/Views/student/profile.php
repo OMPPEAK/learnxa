@@ -54,9 +54,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <p><strong>Full Name:</strong> <?= session('first_name'); ?>
-                                                <?= session('first_name'); ?></p>
+                                                <?= session('last_name'); ?></p>
                                                 <p><strong>Email:</strong> <?= session('email'); ?></p>
-                                                <p><strong>Phone:</strong> <?= session('first_name'); ?></p>
+                                                <p><strong>Phone:</strong> <?= session('phone_number'); ?></p>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><strong>Department:</strong> <?= session('first_name'); ?></p>

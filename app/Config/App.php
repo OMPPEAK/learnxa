@@ -16,7 +16,8 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
+    public string $baseURL = 'https://learnxa.com/';
+    // public string $baseURL = 'http://localhost:8080/';
     // public $baseURL = 'http://localhost/project/public/';
 
 
